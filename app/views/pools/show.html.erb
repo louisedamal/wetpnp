@@ -1,0 +1,11 @@
+<p><%= @pool.title %>
+<%= @pool.description %>
+<%= @pool.price %>
+<%= @pool.address %>
+<%= @pool.capacity %></p>
+
+<%= cl_image_tag(@pool.photo, height: 300, width: 400, crop: :fill) %>
+
+<%= link_to "Back", pools_path %>
+<%= link_to "Edit", edit_pool_path(@pool) %>
+<%= link_to "Delete", pool_path(@pool), method: :delete %>
