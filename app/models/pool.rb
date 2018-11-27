@@ -1,5 +1,6 @@
 class Pool < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
   belongs_to :user
   has_many :bookings, dependent: :destroy
-  mount_uploader :photo, PhotoUploader
+  validates :title, :address, :description, :capacity, :price, presence: true
 end

@@ -1,5 +1,5 @@
 class PoolsController < ApplicationController
-  before_action :set_pool, only: [ :edit, :update, :show, :destroy ]
+  before_action :set_pool, only: [:edit, :update, :show, :destroy]
 
   def index
     @pools = Pool.all
@@ -7,12 +7,13 @@ class PoolsController < ApplicationController
 
   def new
     @pool = Pool.new
+    authorize @pool
   end
 
   def create
-    @user = current_user
     @pool = Pool.new(pool_params)
-    @pool.user = @user
+    @pool.user = current_user
+    authorize @pool
     if @pool.save
       redirect_to pool_path(@pool)
     else
@@ -21,19 +22,23 @@ class PoolsController < ApplicationController
   end
 
   def edit
+    authorize @pool
   end
 
   def update
     @user = current_user
     @pool.update(pool_params)
+    authorize @pool
     redirect_to pool_path(@pool)
   end
 
   def show
+    authorize @pool
   end
 
   def destroy
     @pool.delete
+    authorize @pool
     redirect_to pools_path
   end
 
@@ -44,6 +49,6 @@ class PoolsController < ApplicationController
   end
 
   def set_pool
-    @pool = Pool.find(params[:id])
+    @pool = Pool.find(params[:id]) if Pool.count != 0
   end
 end
