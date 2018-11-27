@@ -5,7 +5,7 @@
     "@rails/webpacker": "3.5",
     "bootstrap": "3",
 
-    "typed.js": "^2.0.9"
+    "typed.js": "^2.0.9",
 
     "flatpickr": "^4.5.2",
     "jquery": "^3.3.1"
