@@ -2,7 +2,7 @@ class PoolsController < ApplicationController
   before_action :set_pool, only: [:edit, :update, :show, :destroy]
 
   def index
-    @pools = Pool.all
+    @pools = policy_scope(Pool).order(created_at: :desc)
   end
 
   def new
@@ -45,7 +45,7 @@ class PoolsController < ApplicationController
   private
 
   def pool_params
-    params.require(:pool).permit(:title, :description, :address, :price, :photo, :capacity)
+    params.require(:pool).permit(:title, :description, :address, :price, :photo, :capacity, :city)
   end
 
   def set_pool
