@@ -4,7 +4,7 @@
     <p>
       <span id="banner-typed-text"></span>
     </p>
-    <%= link_to "Trouver une piscine", "", class: "btn btn-primary btn-lg" %>
+    <%= link_to "Trouver une piscine", "", class: "btn btn-lg btn-search" %>
   </div>
 </div>
 
@@ -19,7 +19,7 @@
           </div>
         </div>
         <div class="pool-content">
-            <p><%= pool.address%></p>
+            <p><%= pool.city%></p>
             <p><%= pool.price %>€</p>
         </div>
         <% end %>
