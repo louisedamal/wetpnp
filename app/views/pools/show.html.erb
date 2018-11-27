@@ -9,3 +9,5 @@
 <%= link_to "Back", pools_path %>
 <%= link_to "Edit", edit_pool_path(@pool) %>
 <%= link_to "Delete", pool_path(@pool), method: :delete %>
+<br>
+<%= link_to "Réserver cette piscine", new_pool_booking_path(@pool)%>
