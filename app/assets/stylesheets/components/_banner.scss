@@ -32,5 +32,14 @@
   font-size: 25px;
   margin-bottom: 30px;
 }
+.banner-content {
+  width: 75vw;
+  text-align: left;
+  margin-left: 200px;
+  a {
+    position: absolute;
+    top: calc(75vh - 25px);
+  }
+}
 
 
