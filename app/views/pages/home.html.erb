@@ -15,29 +15,36 @@
           <%= link_to "Trouver une piscine", "", class: "btn btn-primary btn-lg" %>
             </div>
         </div>
-
-
       </div>
   </div>
 </div>
 
-<div class="container-home">
-  <div class= "display-flex">
+<div class= "container-home">
+  <div class="row display-flex">
+    <div class="col-12">
+      <h2>All Our Pools</h2>
+    </div>
+  </div>
+  <div class="row display-flex">
     <% @pools.each do |pool| %>
        <%= link_to pool_path(pool) do %>
-        <div class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 40%, rgba(0,36,61,0.6) 100%),url('<%= cl_image_path(pool.photo, height: 300, width: 400, crop: :fill) %>')">
+    <div class="row-3">
+      <div class="card">
+        <div class="pool-image" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 40%, rgba(0,36,61,0.6) 100%),url('<%= cl_image_path(pool.photo, height: 300, width: 400, crop: :fill) %>')">
           <div class="card-category">
-            <h4><%= pool.title %></h4>
-          </div>
-          <div class="card-description">
-            <p> <%= pool.price%>€</p>
-            <p><%= pool.address %></p>
+            <h4><%=pool.title%></h4>
           </div>
         </div>
-       <% end %>
+        <% end %>
+        <div class="pool-content">
+            <p><%= pool.address%></p>
+              <i class="fas fa-euro-sign"></i>
+              <span><%= pool.price %></span>
+        </div>
+      </div>
+    </div>
     <% end %>
   </div>
 </div>
-
 
 
