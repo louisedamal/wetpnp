@@ -25,7 +25,7 @@
   <div class= "display-flex">
     <% @pools.each do |pool| %>
        <%= link_to pool_path(pool) do %>
-        <div class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 40%, rgba(0,36,61,0.6) 100%),url('<%= cl_image_path(pool.photo, height: 300, width: 400, crop: :fill) %>')">
+        <div class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 40%, rgba(0,36,61,0.6) 100%),url('<%= cl_image_path(pool.photo, height: 300, width: 400, crop: :fill) unless pool.photo.url.nil? %>')">
           <div class="card-category">
             <h4><%= pool.title %></h4>
           </div>
@@ -38,6 +38,7 @@
     <% end %>
   </div>
 </div>
+
 
 
 
