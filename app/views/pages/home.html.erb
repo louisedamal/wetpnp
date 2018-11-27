@@ -2,12 +2,43 @@
 
   <div class="banner-content">
       <div class="card-banner">
-        <div class="col-xs-6 col-offset-4">
-          <h1>Réservez une piscine pour une Pool Party près de chez vous</h1>
-          <p>Simple, efficace, et fun.</p>
-          <%= link_to "Trouver une piscine", "", class: "btn btn-primary btn-lg" %>
+        <div class="row">
+          <div class="col-xs-6 col-offset-3">
+            <h1>Réservez une piscine pour une Pool Party près de chez vous</h1>
+              <p>
+                <span id="banner-typed-text"></span>
+              </p>
+          </div>
         </div>
+        <div class="row">
+           <div class="col-xs-6 col-offset-3">
+          <%= link_to "Trouver une piscine", "", class: "btn btn-primary btn-lg" %>
+            </div>
+        </div>
+
+
       </div>
   </div>
 </div>
+
+<div class="container-home">
+  <div class= "display-flex">
+    <% @pools.each do |pool| %>
+       <%= link_to pool_path(pool) do %>
+        <div class="card" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 40%, rgba(0,36,61,0.6) 100%),url('<%= cl_image_path(pool.photo, height: 300, width: 400, crop: :fill) %>')">
+          <div class="card-category">
+            <h4><%= pool.title %></h4>
+          </div>
+          <div class="card-description">
+            <p> <%= pool.price %></p>
+            <p><%= pool.address %></p>
+          </div>
+        </div>
+       <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+
 
