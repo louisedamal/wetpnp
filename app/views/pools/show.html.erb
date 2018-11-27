@@ -22,9 +22,12 @@
           <%= @pool.capacity %> personnes</p>
 
           <div class="card-icons">
-            <%= link_to "Back", pools_path %>
-            <%= link_to "Edit", edit_pool_path(@pool) %>
-            <%= link_to "Delete", pool_path(@pool), method: :delete %>
+            <% if policy(@pool).edit?  %>
+            <%= link_to "Modifier", edit_pool_path(@pool) %>
+            <% end %>
+            <% if policy(@pool).destroy?  %>
+            <%= link_to "Supprimer", pool_path(@pool), method: :delete %>
+            <% end %>
           </div>
       </div>
 
@@ -41,7 +44,7 @@
       <div class="card-side-container">
         <div class="card-pool card-side">
           <p>Ici se trouvera prochainement le form afin de réserver une piscine, en attendant, cliquez sur le bouton.</p>
-          <%= link_to "Réserver ma piscine", "", class: "btn btn-primary btn-lg" %>
+          <%= link_to "Réserver ma piscine", new_pool_booking_path(@pool), class: "btn btn-primary btn-lg" %>
         </div>
       </div>
     </div>
