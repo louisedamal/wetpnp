@@ -1,7 +1,8 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
   def index
-    @bookings = Booking.where(:id == current_user)
+    @bookings = policy_scope(Booking).order(created_at: :desc)
+    authorize @bookings
   end
 
   def show
@@ -10,12 +11,14 @@ class BookingsController < ApplicationController
   def new
     @pool = Pool.find(params[:pool_id])
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.pool = Pool.find(params[:pool_id])
+    authorize @booking
     if @booking.save
       redirect_to bookings_path
     else
@@ -34,6 +37,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.delete
+    authorize @booking
     redirect_to bookings_path
   end
 

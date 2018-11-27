@@ -2,7 +2,7 @@ class PoolsController < ApplicationController
   before_action :set_pool, only: [:edit, :update, :show, :destroy]
 
   def index
-    @pools = Pool.all
+    @pools = policy_scope(Pool).order(created_at: :desc)
   end
 
   def new
