@@ -1,14 +1,13 @@
 .card {
   height: 260px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-position: center;
   color: white;
   position: relative;
   margin-top : 20px;
   width: 400px;
-  box-shadow: 2px 2px 2px 2px rgba(72, 164, 225, .2);
-  border-radius: 2%;
+  box-shadow: 5px 5px 5px 5px rgba(72, 164, 225, .2);
+  border-radius: 3%;
 }
 
 .global-card {
@@ -51,6 +50,7 @@
   top: 10px;
   width: 40px;
   border-radius: 50%;
+  color: black;
 }
 .card-category {
   position: absolute;
@@ -59,6 +59,8 @@
   font-size: 20px;
   text-transform: uppercase;
   font-weight: bolder;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
 .card-description {
   position: absolute;
@@ -71,6 +73,20 @@
 .card-description p {
   font-size: 18px;
   opacity: 0.9;
-
 }
+
+.pool-image {
+  min-width: 350px;
+  min-height: 180px;
+}
+
+.pool-content{
+  display: relative;
+  color: #262959;
+  margin: 10px;
+}
+
+
+
+
 
