@@ -1,0 +1,33 @@
+.btn-search {
+  color: white;
+  background-color: $blue;
+  border: 2px solid;
+  border-radius: 10px;
+  width: 25vw;
+  box-shadow: 2px 2px 2px 2px rgba(72, 164, 225, .2);
+}
+
+.btn-blue {
+  background: #31BAF5;
+  color: white;
+  border-radius: 7px;
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.btn-blue:hover {
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.16);
+  color: white;
+  transform: translateY(-1px);
+  background: #259bce;
+}
+
+.btn-search:hover {
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.16);
+  color: white;
+  transform: translateY(-1px);
+  background: #259bce;
+}
+
