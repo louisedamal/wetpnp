@@ -1,0 +1,16 @@
+.banner-form {
+  height: 100vh;
+  background-size: cover !important;
+  display: flex;
+  justify-content: center;
+}
+
+.banner-form a {
+  color: white;
+  opacity: 0.7;
+}
+
+.banner-form a:hover {
+  text-decoration: none;
+  opacity: 1;
+}
