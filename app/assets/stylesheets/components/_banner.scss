@@ -1,21 +1,22 @@
 .home-banner {
   background-size: cover;
   background-position: center;
-  height: 90vh;
+  height: 75vh;
   color: #eee;
   text-align: center;
   padding-top: 15vh;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-  display: flex;
+  display: relative;
 }
 
 .card-banner {
+  position: absolute;
   text-align: left;
-  padding-left: 20vh;
+  padding-left: 40vh;
 }
 
 .home-banner h1 {
-  font-size: 65px;
+  font-size: 56px;
   text-width: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
 }
@@ -23,3 +24,4 @@
   font-size: 25px;
   margin-bottom: 30px;
 }
+
