@@ -1,8 +1,8 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
+
   def index
     @bookings = policy_scope(Booking).order(created_at: :desc)
-    authorize @bookings
   end
 
   def show
@@ -37,7 +37,6 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.delete
-    authorize @booking
     redirect_to bookings_path
   end
 
@@ -45,6 +44,7 @@ class BookingsController < ApplicationController
 
   def set_booking
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def booking_params
