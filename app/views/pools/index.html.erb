@@ -1,7 +1,13 @@
-<% @pools.each do |pool| %>
-<%= link_to pool.title, pool_path(pool) %>
-<%= pool.price %>
-<%= pool.address %>
-<% end %>
 
-
+<div class="container">
+  <h1>My Pools</h1>
+    <ul>
+      <% @pools.each do |pool| %>
+        <div class="row">
+          <%= link_to pool.title, pool_path(pool)%>
+          <%= pool.price %>
+          <%= pool.address %>
+        </div>
+      <% end %>
+    </ul>
+</div>
