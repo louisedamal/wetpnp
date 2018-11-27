@@ -1,0 +1,21 @@
+.tabs {
+  display: flex;
+}
+
+.tab {
+  padding: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  opacity: 0.3;
+  font-weight: bolder;
+}
+
+.tab.active {
+  border-bottom: 5px solid #259bce;
+  opacity: 1;
+}
+
+.tab:hover {
+  opacity: 1;
+}
