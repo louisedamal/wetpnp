@@ -1,11 +1,13 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
+
   def home
     @pools = Pool.all.where.not(latitude: nil, longitude: nil)
     @markers = @pools.map do |pool|
       {
         lng: pool.longitude,
-        lat: pool.latitude
+        lat: pool.latitude,
+        infoWindow: render_to_string(partial: "infowindow", locals: { pool: pool })
       }
     end
   end
