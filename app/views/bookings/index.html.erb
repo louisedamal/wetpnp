@@ -6,25 +6,6 @@
       <a href="#" class="tab active">En tant que swimmer</a>
       <a href="#" class="tab">En tant que propriétaire</a>
     </div>
-    <ul class="bookings">
-      <% @bookings.each do |booking| %>
-        <li class="booking">
-          <div class="booking-title">
-            <h4><%= link_to "#{booking.pool.title}", booking_path(booking) %></h4>
-          </div>
-          <div class="booking-date">
-            <p><%= booking.date %></p>
-          </div>
-          <div class="booking-date">
-            <p><%= booking.pool.price %> €</p>
-          </div>
-          <div class="booking-delete">
-            <%= link_to "Annuler", booking_path(booking), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
   <ul class="bookings">
     <% @bookings_as_owner.each do |booking| %>
       <li class="booking">
