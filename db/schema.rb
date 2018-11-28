@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_27_152556) do
+ActiveRecord::Schema.define(version: 2018_11_28_094854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.string "status"
+    t.string "status", default: "En attente"
     t.bigint "user_id"
     t.bigint "pool_id"
     t.datetime "created_at", null: false
