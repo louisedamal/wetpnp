@@ -5,8 +5,41 @@
     <a href="#" class="tab">En tant que propriétaire</a>
   </div>
   <ul class="bookings">
-    <% @bookings.each do |booking| %>
+    <% @bookings_as_owner.each do |booking| %>
       <li class="booking">
+        <div class="booking-status">
+          <p><%= booking.status %></p>
+        </div>
+        <div class="booking-title">
+          <h4><%= link_to "#{booking.pool.title}", booking_path(booking) %></h4>
+        </div>
+        <div class="booking-date">
+          <p><%= booking.date %></p>
+        </div>
+        <div class="booking-date">
+          <p><%= booking.pool.price %> €</p>
+        </div>
+        <% if policy(Booking).create? %>
+          <% if booking.status == "En attente" %>
+            <div class="booking-accept">
+              <%= link_to "Accepter", booking_path(booking), method: :put %>
+            </div>
+            <div class="booking-delete">
+              <%= link_to "Refuser", booking_path(booking), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
+            </div>
+            <% else %>
+            <div class="booking-delete">
+              <%= link_to "Annuler", booking_path(booking), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
+            </div>
+          <% end %>
+        <% end %>
+      </li>
+    <% end %>
+    <% @bookings_as_swimmer.each do |booking| %>
+      <li class="booking">
+        <div class="booking-status">
+          <p><%= booking.status %></p>
+        </div>
         <div class="booking-title">
           <h4><%= link_to "#{booking.pool.title}", booking_path(booking) %></h4>
         </div>
