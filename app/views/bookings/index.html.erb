@@ -13,12 +13,12 @@
           <p><%= booking.status %></p>
         </div>
         <div class="booking-title">
-          <h4><%= link_to "#{booking.pool.title}", booking_path(booking) %></h4>
+          <h4><%= link_to "#{booking.pool.title}", pool_path(booking.pool) %></h4>
         </div>
         <div class="booking-date">
           <p><%= booking.date %></p>
         </div>
-        <div class="booking-date">
+        <div class="booking-price">
           <p><%= booking.pool.price %> €</p>
         </div>
         <% if policy(Booking).create? %>
@@ -43,12 +43,12 @@
           <p><%= booking.status %></p>
         </div>
         <div class="booking-title">
-          <h4><%= link_to "#{booking.pool.title}", booking_path(booking) %></h4>
+          <h4><%= link_to "#{booking.pool.title}", pool_path(booking.pool) %></h4>
         </div>
         <div class="booking-date">
           <p><%= booking.date %></p>
         </div>
-        <div class="booking-date">
+        <div class="booking-price">
           <p><%= booking.pool.price %> €</p>
         </div>
         <div class="booking-delete">
