@@ -19,12 +19,20 @@
         <div class="booking-date">
           <p><%= booking.pool.price %> €</p>
         </div>
-        <div class="booking-accept">
-          <%= link_to "Accepter", booking_path(booking), method: :put %>
-        </div>
-        <div class="booking-delete">
-          <%= link_to "Refuser", booking_path(booking), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
-        </div>
+        <% if policy(Booking).create? %>
+          <% if booking.status == "En attente" %>
+            <div class="booking-accept">
+              <%= link_to "Accepter", booking_path(booking), method: :put %>
+            </div>
+            <div class="booking-delete">
+              <%= link_to "Refuser", booking_path(booking), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
+            </div>
+            <% else %>
+            <div class="booking-delete">
+              <%= link_to "Annuler", booking_path(booking), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
+            </div>
+          <% end %>
+        <% end %>
       </li>
     <% end %>
     <% @bookings_as_swimmer.each do |booking| %>

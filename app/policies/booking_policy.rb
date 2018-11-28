@@ -18,7 +18,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.user == user || record.pool.user == user
   end
 
   def destroy?
