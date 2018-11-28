@@ -3,6 +3,7 @@ class PoolsController < ApplicationController
 
   def index
     @pools = policy_scope(Pool).order(created_at: :desc)
+    @pools_user = current_user.pools
   end
 
   def new

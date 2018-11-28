@@ -1,13 +1,21 @@
-
+<% content_for :navbar_class, "navbar-wagon-white-fix" %>
 <div class="container">
-  <h1>My Pools</h1>
-    <ul>
-      <% @pools.each do |pool| %>
-        <div class="row">
-          <%= link_to pool.title, pool_path(pool)%>
-          <%= pool.price %>
-          <%= pool.address %>
-        </div>
+  <div class="container-booking">
+    <h1>Mes piscines</h1>
+    <ul class="pools">
+      <% @pools_user.each do |pool| %>
+        <li class="pool">
+          <div class="pool-title">
+            <h4><%= link_to pool.title, pool_path(pool)%></h4>
+          </div>
+          <div class="pool-price">
+            <p><%= pool.price %> €</p>
+          </div>
+          <div class="pool-delete">
+            <%= link_to "Supprimer", pools_path, method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
+          </div>
+        </li>
       <% end %>
     </ul>
+  </div>
 </div>

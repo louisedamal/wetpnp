@@ -1,11 +1,10 @@
-.bookings {
+.pools {
   background: #3bbbf32e;
   padding: 20px;
   border-radius: 8px;
 }
 
-
-.booking {
+.pool {
   background: white;
   padding: 20px;
   display: flex;
@@ -14,31 +13,26 @@
   border-radius: 6px;
 }
 
-.booking-title {
+.pool-title {
   flex-grow: 1;
-  padding-left: 55px;
+  padding-left: 10px;
   font-size: 13px;
   color: rgba(0,0,0,0.4);
   margin-bottom: 0px;
 }
 
-.booking-status p {
-  margin: 0px;
-  font-weight: bold;
-  padding-left: 10px;
-}
-
-.booking-title a {
+.pool-title a {
   color: black;
 }
 
-.booking-price p {
+.pool-price p {
   margin: 0px;
   font-weight: bold;
+  padding-right: 10px;
 }
 
-.booking-accept, .booking-delete a {
-  color: black;
+.pool-delete a {
+  color: #f70000;
   padding-left: 50px;
   padding-right: 10px;
 }
