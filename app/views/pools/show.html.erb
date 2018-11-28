@@ -5,43 +5,45 @@
     <h1><%= @pool.title %></h1>
   </div>
 </div>
+<div class="container">
+  <div class="main-container">
+    <div class="card-container">
+      <div class="global-card">
+        <div class="card-pool card-pool-left">
+          <h3>Description</h3>
+          <h5><i>"<%= @pool.description %>"</i></h5>
+          <p>Adresse <i class="fas fa-map-marker-alt"></i>
+          <br>
+          <%= @pool.address %></p>
+          <p>Prix :
+            <%= @pool.price %> <i class="fas fa-euro-sign"></i></p>
+          <p>Capacité d'accueil <i class="fas fa-users"></i>
+          <br>
+          <%= @pool.capacity %> personnes</p>
 
-<div class="main-container">
-  <div class="card-container">
-    <div class="global-card">
-      <div class="card-pool card-pool-left">
-        <h3>Description:</h3>
-        <h5>"<%= @pool.description %>"</h5>
-        <p>Adresse:
-        <br>
-        <%= @pool.address %></p>
-        <p>Prix :
-          <%= @pool.price %> €</p>
-        <p>Capacité d'accueil:
-        <br>
-        <%= @pool.capacity %> personnes</p>
+          <div class="card-icons">
+            <% if policy(@pool).edit?  %>
+              <%= link_to '<i class="fas fa-pencil-alt btn-modif"></i>'.html_safe, edit_pool_path(@pool) %>
 
-        <div class="card-icons">
-          <% if policy(@pool).edit?  %>
-            <%= link_to "Modifier", edit_pool_path(@pool) %>
-          <% end %>
-          <% if policy(@pool).destroy?  %>
-            <%= link_to "Supprimer", pool_path(@pool), method: :delete %>
-          <% end %>
+            <% end %>
+            <% if policy(@pool).destroy?  %>
+                <%= link_to '<i class="far fa-trash-alt btn-modif"></i>'.html_safe, pool_path(@pool), method: :delete %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="card-side">
-  <!-- <div class="col-sm-5"> -->
-    <div class="card-pool">
-      <%= simple_form_for([@pool, @booking]) do |f| %>
-        <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
-        <%= f.submit "Réserver ma piscine", class: "btn btn-primary btn-lg"%>
-      <% end %>
+    <div class="card-side">
+    <!-- <div class="col-sm-5"> -->
+      <div class="card-pool">
+        <%= simple_form_for([@pool, @booking]) do |f| %>
+          <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
+          <h3><center><%= @pool.price %> <i class="fas fa-euro-sign"></i> /soirée</center></h3>
+          <center><%= f.submit "Réserver", class: "btn btn-lg btn-search"%></center>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-
 
 
