@@ -6,7 +6,7 @@ import { loadDynamicBannerText } from '../components/banner';
 import { initMapbox } from '../plugins/init_mapbox';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
-import { initAutocomplete } from '../plugins/init_autocomplete'
+import { initAutocomplete } from '../components/init_autocomplete'
 
 
 initUpdateNavbarOnScroll();

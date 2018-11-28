@@ -6,7 +6,7 @@
         <div class="form-pool">
           <%= simple_form_for (@pool) do |f| %>
             <%= f.input :title, label: 'Titre de l\'annonce' %>
-            <%= f.input :address, label: 'Adresse' %>
+            <%= f.input :address, as: :string, label: 'Adresse', id: 'pool_address' %>
             <%= f.input :description, label: 'Description de votre annonce' %>
             <%= f.input :capacity, label: 'Capacité' %>
             <%= f.input :price, label: 'Prix par jour' %>
