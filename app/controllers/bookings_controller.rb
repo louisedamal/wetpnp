@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking.update(status: "Accepté")
+    @booking.update(status: "Acceptée")
     redirect_to bookings_path
   end
 
