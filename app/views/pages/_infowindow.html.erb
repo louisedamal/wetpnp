@@ -1,1 +1,9 @@
-<h1><%=pool.title%></h1>
+<div id="info-card-img" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 40%, rgba(0,36,61,0.6) 100%),url('<%= cl_image_path(pool.photo, height: 30, width: 40, crop: :fill) unless pool.photo.url.nil? %>')">
+</div>
+<div id="info-card-category">
+  <h4><%=pool.title%></h4>
+</div>
+<div id="info-pool-content">
+    <p><%=pool.price %>€ / par jour </p>
+    <p><%=pool.address%></p>
+</div>
