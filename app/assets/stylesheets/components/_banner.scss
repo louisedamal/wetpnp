@@ -28,19 +28,17 @@
   font-size: 56px;
   text-width: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 .home-banner p {
   font-size: 25px;
   margin-bottom: 30px;
+  text-align: center;
 }
 .banner-content {
   width: 75vw;
-  text-align: left;
+  text-align: center;
   margin-left: 200px;
-  a {
-    position: absolute;
-    top: calc(75vh - 25px);
-  }
 }
 
 
