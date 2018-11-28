@@ -3,6 +3,8 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = policy_scope(Booking).order(created_at: :desc)
+    @bookings_as_swimmer = current_user.bookings
+    @bookings_as_owner = current_user.bookings_as_owner
   end
 
   def show
@@ -30,9 +32,8 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @user = current_user
-    @booking.update(booking_params)
-    redirect_to booking_path(@booking)
+    @booking.update(status: "Accepté")
+    redirect_to bookings_path
   end
 
   def destroy
@@ -48,6 +49,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:date)
+    params.require(:booking).permit(:status)
   end
 end
