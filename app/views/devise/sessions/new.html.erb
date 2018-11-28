@@ -13,7 +13,7 @@
             <%= f.input :password,
                         required: false,
                         input_html: { autocomplete: "current-password" },
-                        :placeholder => "Mot de passe"  %>
+                        :placeholder => "Minimum 6 caractères"  %>
             <%= f.input :remember_me, label: "Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
           </div>
           <div class="form-actions">
