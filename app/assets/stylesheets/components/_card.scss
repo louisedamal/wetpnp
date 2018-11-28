@@ -7,6 +7,15 @@
   border-radius: 3%;
 }
 
+.card-pool {
+  position: relative;
+  margin-top: 20px;
+  box-shadow: 5px 5px 5px 5px rgba(72, 164, 225, .2);
+  border-radius: 3%;
+  padding: 15px;
+
+}
+
 .card-img {
   height: 180px;
   background-size: cover !important;
@@ -17,21 +26,24 @@
 .global-card {
   width: 100%;
   position: relative;
+  padding: 20px;
 }
 
 .card-pool-left {
   width: 600px;
 }
 
-.card-side-container {
-  position: relative;
-  height: 100%;
+.main-container {
+  display: flex;
 }
 
 .card-side {
-  width: 450px;
-  position: sticky;
-  top: 20px;
+  flex: 0 0 450px;
+  margin-right: 20px;
+  height: 100vh;
+  position: sticky !important; /* !important to override Gmaps inline CSS */
+  top: 0 !important;
+  padding: 20px;
 }
 
 .card-user {

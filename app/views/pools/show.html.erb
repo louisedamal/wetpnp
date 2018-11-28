@@ -1,52 +1,44 @@
 <% content_for :navbar_class, "navbar-wagon-white-fix" %>
+
 <div class="home-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 40%, rgba(0,36,61,0.6) 100%), url(<%= cl_image_path(@pool.photo)%> );">
   <div class="banner-title">
     <h1><%= @pool.title %></h1>
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-7">
-      <div class="global-card">
-        <div class="card-pool card-pool-left">
-          <h3>Description:</h3>
-          <h5>"<%= @pool.description %>"</h5>
-          <p>Adresse:
-          <br>
-          <%= @pool.address %></p>
-          <p>Prix /personne:
-            <%= @pool.price %> €</p>
-          <p>Capacité d'accueil:
-          <br>
-          <%= @pool.capacity %> personnes</p>
+<div class="main-container">
+  <div class="card-container">
+    <div class="global-card">
+      <div class="card-pool card-pool-left">
+        <h3>Description:</h3>
+        <h5>"<%= @pool.description %>"</h5>
+        <p>Adresse:
+        <br>
+        <%= @pool.address %></p>
+        <p>Prix :
+          <%= @pool.price %> €</p>
+        <p>Capacité d'accueil:
+        <br>
+        <%= @pool.capacity %> personnes</p>
 
-          <div class="card-icons">
-            <% if policy(@pool).edit?  %>
+        <div class="card-icons">
+          <% if policy(@pool).edit?  %>
             <%= link_to "Modifier", edit_pool_path(@pool) %>
-            <% end %>
-            <% if policy(@pool).destroy?  %>
+          <% end %>
+          <% if policy(@pool).destroy?  %>
             <%= link_to "Supprimer", pool_path(@pool), method: :delete %>
-            <% end %>
-          </div>
-      </div>
-
-        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint cumque veniam sapiente expedita, adipisci eos praesentium, doloremque eveniet esse magnam fuga, at numquam dolor ratione architecto ab. Aspernatur, natus, sequi.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint cumque veniam sapiente expedita, adipisci eos praesentium, doloremque eveniet esse magnam fuga, at numquam dolor ratione architecto ab. Aspernatur, natus, sequi.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint cumque veniam sapiente expedita, adipisci eos praesentium, doloremque eveniet esse magnam fuga, at numquam dolor ratione architecto ab. Aspernatur, natus, sequi.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint cumque veniam sapiente expedita, adipisci eos praesentium, doloremque eveniet esse magnam fuga, at numquam dolor ratione architecto ab. Aspernatur, natus, sequi.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint cumque veniam sapiente expedita, adipisci eos praesentium, doloremque eveniet esse magnam fuga, at numquam dolor ratione architecto ab. Aspernatur, natus, sequi.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint cumque veniam sapiente expedita, adipisci eos praesentium, doloremque eveniet esse magnam fuga, at numquam dolor ratione architecto ab. Aspernatur, natus, sequi.</p> -->
-      </div>
-    </div>
-
-    <div class="col-sm-5">
-      <div class="card-side-container">
-        <div class="card-pool card-side">
-          <p>Ici se trouvera prochainement le form afin de réserver une piscine, en attendant, cliquez sur le bouton.</p>
-          <%= link_to "Réserver ma piscine", new_pool_booking_path(@pool), class: "btn btn-primary btn-lg" %>
+          <% end %>
         </div>
       </div>
+    </div>
+  </div>
+  <div class="card-side">
+  <!-- <div class="col-sm-5"> -->
+    <div class="card-pool">
+      <%= simple_form_for([@pool, @booking]) do |f| %>
+        <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
+        <%= f.submit "Réserver ma piscine", class: "btn btn-primary btn-lg"%>
+      <% end %>
     </div>
   </div>
 </div>
