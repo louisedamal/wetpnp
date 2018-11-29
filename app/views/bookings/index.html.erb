@@ -18,6 +18,9 @@
         <div class="booking-date">
           <p><%= booking.date %></p>
         </div>
+        <div class="booking-messages">
+          <p><%= link_to "Voir les messages", booking_messages_path(booking) %></p>
+        </div>
         <div class="booking-price">
           <p><%= booking.pool.price %> €</p>
         </div>
@@ -47,6 +50,9 @@
         </div>
         <div class="booking-date">
           <p><%= booking.date %></p>
+        </div>
+        <div class="booking-messages">
+          <p><%= link_to "Voir les messages", booking_messages_path(booking) %></p>
         </div>
         <div class="booking-price">
           <p><%= booking.pool.price %> €</p>
