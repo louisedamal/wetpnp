@@ -5,7 +5,15 @@
     <p>
       <span id="banner-typed-text"></span>
     </p>
-    <%= link_to "Trouver une piscine", "", class: "btn btn-lg btn-search", id: "btn-search-homepage" %>
+    <div class="form-inline">
+      <%= form_tag search_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control search-form",
+          placeholder: "Paris" %>
+        <%= submit_tag "Trouver une piscine", class: "btn btn-lg btn-search", id: "btn-search-homepage"%>
+      <% end %>
+  </div>
   </div>
 </div>
 

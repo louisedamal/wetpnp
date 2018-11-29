@@ -16,7 +16,7 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "https://www.systemealimentairequebec.info/sites/systemealimentairequebec.info/files/vignette_acteurs_locaux/avatar_neutre.png", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= cl_image_tag @user.avatar, :transformation=>[{:gravity=>"face"}], class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to bookings_path do %>
@@ -27,6 +27,9 @@
             <%= link_to pools_path do %>
               <%= t(".piscines", default: "Mes piscines") %>
               <% end %>
+            </li>
+            <li>
+            <%= link_to "Mon profile", user_path(current_user) %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
