@@ -2,6 +2,7 @@ class PoolsController < ApplicationController
   before_action :set_pool, only: [:edit, :update, :show, :destroy]
 
   def index
+    @user = current_user
     @pools = policy_scope(Pool).order(created_at: :desc)
     @pools_user = current_user.pools
   end

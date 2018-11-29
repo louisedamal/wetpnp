@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :cancel]
 
   def index
+    @user = current_user
     @bookings = policy_scope(Booking).order(created_at: :desc)
     @bookings_as_swimmer = current_user.bookings
     @bookings_as_owner = current_user.bookings_as_owner
