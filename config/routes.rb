@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
     resources :reviews, only: [:new, :create]
   end
-  
-  resources :bookings, only: [:destroy, :index, :show, :edit, :update] do
+  put '/bookings/:id', to: 'bookings#cancel', as: 'cancel_booking'
+  resources :bookings, only: [:index, :show, :edit, :update] do
     resources :messages, only: [:index, :new, :create]
   end
 
