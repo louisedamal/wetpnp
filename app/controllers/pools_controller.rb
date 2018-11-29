@@ -36,13 +36,28 @@ class PoolsController < ApplicationController
   def show
     authorize @pool
     @booking = Booking.new
-
   end
 
   def destroy
     @pool.delete
     authorize @pool
     redirect_to pools_path
+  end
+
+  def search
+    if params[:query].present?
+      @pools = Pool.near(params[:query], 50)
+    else
+      @pools = Pool.all.where.not(latitude: nil, longitude: nil)
+    end
+    authorize @pools
+    @markers = @pools.map do |pool|
+      {
+        lng: pool.longitude,
+        lat: pool.latitude,
+        infoWindow: render_to_string(partial: "pages/infowindow", locals: { pool: pool })
+      }
+    end
   end
 
   private

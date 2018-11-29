@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/dashboard', to: 'pages#dashboard'
+  get '/search', to: 'pools#search'
   resources :pools do
     resources :bookings, only: [:new, :create]
   end
