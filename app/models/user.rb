@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_many :pools, dependent: :destroy
   has_many :bookings_as_owner, through: :pools, source: :bookings
+  has_many :messages
 end
