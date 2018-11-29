@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   resources :pools do
     resources :bookings, only: [:new, :create]
   end
+  
+  resources :bookings, only: [:destroy, :index, :show, :edit, :update] do
+    resources :messages, only: [:index, :new, :create]
+  end
 
-  resources :bookings, only: [:destroy, :index, :show, :edit, :update]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
