@@ -13,7 +13,9 @@
         <div class="card-pool card-pool-left">
           <h3>À propos de cette piscine</h3>
             <p><%= @pool.description %></p>
-            <h3>Capacité d'accueil</h3>
+          <h3>Propriétaire</h3>
+            <p><%= cl_image_tag @pool.user.avatar, :transformation=>[{:gravity=>"face"}], class:"message-avatar"%>     <%= @pool.user.first_name %></p>
+          <h3>Capacité d'accueil</h3>
             <p><i class="fas fa-users"></i> <%= @pool.capacity %> Pers.</p>
             <h3>Prix</h3>
               <p><%= @pool.price %> <i class="fas fa-euro-sign"></i> / jour</p>

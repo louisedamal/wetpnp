@@ -38,6 +38,7 @@ class PoolsController < ApplicationController
     authorize @pool
     @booking = Booking.new
     @review = Review.new
+    @user = current_user
     @markers =
       [{
         lng: @pool.longitude,
