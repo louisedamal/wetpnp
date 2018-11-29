@@ -57,6 +57,13 @@
         <div class="booking-price">
           <p><%= booking.pool.price %> €</p>
         </div>
+
+        <% if policy(Review).create? && booking.status == "Acceptée" %>
+          <div class="booking-accept">
+            <%= link_to "Donner mon avis", new_pool_review_path(booking.pool), method: :get %>
+          </div>
+        <% end %>
+
         <div class="booking-delete">
           <%= link_to "Annuler", booking_path(booking), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
         </div>

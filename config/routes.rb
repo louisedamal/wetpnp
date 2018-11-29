@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :pools do
     resources :bookings, only: [:new, :create]
+    resources :reviews, only: [:new, :create]
   end
   
   resources :bookings, only: [:destroy, :index, :show, :edit, :update] do
