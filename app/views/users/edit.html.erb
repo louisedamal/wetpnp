@@ -5,8 +5,7 @@
     <div class="container-booking">
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
-          <h1 id="title-form" class="text-center">Modifier mon profile</h1>
-          <%= link_to '<i class="fas fa-chevron-left"></i> Retour'.html_safe, user_path%>
+          <h1 id="title-form" class="text-center">Modifier mon profil</h1>
           <div class="form-pool">
             <%= simple_form_for (@user) do |f| %>
               <%= f.input :first_name, label: 'Votre prenom' %>
