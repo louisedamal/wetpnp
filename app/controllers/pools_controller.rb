@@ -38,6 +38,12 @@ class PoolsController < ApplicationController
     authorize @pool
     @booking = Booking.new
     @review = Review.new
+    @markers =
+      [{
+        lng: @pool.longitude,
+        lat: @pool.latitude,
+        infoWindow: render_to_string(partial: "pages/infowindow", locals: { pool: @pool })
+      }]
   end
 
   def destroy
