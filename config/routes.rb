@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
 
   get '/dashboard', to: 'pages#dashboard'
+  get '/search', to: 'pools#search'
 
   resources :pools do
     resources :bookings, only: [:new, :create]

@@ -1,0 +1,38 @@
+<% content_for :navbar_class, "navbar-wagon-white-fix" %>
+
+<div class="container-booking">
+  <h3>Résultats de votre recherche pour <%= params[:query] %></h3>
+</div>
+<div class="map-container">
+  <div class="container">
+    <div class="row">
+
+        <% @pools.each do |pool| %>
+          <div class="col-xs-12 col-sm-12 col-md-6">
+          <div class = "card card-search">
+           <%= link_to pool_path(pool) do %>
+
+              <div class="card-img" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 40%, rgba(0,36,61,0.6) 100%),url('<%= cl_image_path(pool.photo, height: 300, width: 400, crop: :fill) unless pool.photo.url.nil? %>')">
+
+                <div class="card-category">
+                  <h4><%=pool.title%></h4>
+                </div>
+
+              </div>
+
+              <div class="pool-content">
+                <p><%= pool.price %>€</p>
+              </div>
+            <% end %>
+          </div>
+         </div>
+        <% end %>
+
+    </div>
+  </div>
+  <div id="map" style="position: relative; overflow: hidden;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%=ENV['MY_MAPBOX_API_KEY']%>"
+  >
+  </div>
+</div>
