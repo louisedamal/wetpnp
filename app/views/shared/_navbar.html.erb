@@ -19,6 +19,8 @@
           <% if @user.present? %>
             <% if @user.avatar.present? %>
             <%= cl_image_tag @user.avatar, :transformation=>[{:gravity=>"face"}], class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <% else %>
+              <img src="https://www.systemealimentairequebec.info/sites/systemealimentairequebec.info/files/vignette_acteurs_locaux/avatar_neutre.png" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
             <% end %>
           <% else %>
             <img src="https://www.systemealimentairequebec.info/sites/systemealimentairequebec.info/files/vignette_acteurs_locaux/avatar_neutre.png" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
