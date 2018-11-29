@@ -5,42 +5,61 @@
     <h1><%= @pool.title %></h1>
   </div>
 </div>
+
 <div class="container">
   <div class="main-container">
     <div class="card-container">
       <div class="global-card">
         <div class="card-pool card-pool-left">
-          <h3>Description</h3>
-          <h5><i>"<%= @pool.description %>"</i></h5>
-          <p>Adresse <i class="fas fa-map-marker-alt"></i>
-          <br>
-          <%= @pool.address %></p>
-          <p>Prix :
-            <%= @pool.price %> <i class="fas fa-euro-sign"></i></p>
-          <p>Capacité d'accueil <i class="fas fa-users"></i>
-          <br>
-          <%= @pool.capacity %> personnes</p>
+          <h3>À propos de cette piscine</h3>
+            <p><%= @pool.description %></p>
+            <h3>Capacité d'accueil</h3>
+            <p><i class="fas fa-users"></i> <%= @pool.capacity %> Pers.</p>
+            <h3>Prix</h3>
+              <p><%= @pool.price %> <i class="fas fa-euro-sign"></i> / jour</p>
 
-          <div class="card-icons">
-            <% if policy(@pool).edit?  %>
-              <%= link_to '<i class="fas fa-pencil-alt btn-modif"></i>'.html_safe, edit_pool_path(@pool) %>
-
+          <div class="comments">
+            <h3><%= "Avis & Commentaires" %></h3>
+            <% @pool.reviews.each do |review|%>
+              <span class="star">
+              <% review.rating.times do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+              <% end %>
+              </span> <br>
+              <i><%= review.content %> </i><br><hr>
             <% end %>
-            <% if policy(@pool).destroy?  %>
-                <%= link_to '<i class="far fa-trash-alt btn-modif"></i>'.html_safe, pool_path(@pool), method: :delete %>
-            <% end %>
-
           </div>
+          <div class="card-icons">
+              <% if policy(@pool).edit?  %>
+                <%= link_to '<i class="fas fa-pencil-alt btn-modif"></i>'.html_safe, edit_pool_path(@pool) %>
+              <% end %>
+              <% if policy(@pool).destroy?  %>
+                <%= link_to '<i class="far fa-trash-alt btn-modif"></i>'.html_safe, pool_path(@pool), method: :delete %>
+              <% end %>
+            </div>
+        </div>
+        <div class= "card-pool">
+          <h3>Adresse</h3>
+          <p><i class="fas fa-map-marker-alt"></i> <%= @pool.address %></p>
+          <div
+            id="map"
+            style="width: 95%;
+            height: 400px;"
+            data-markers="<%= @markers.to_json %>"
+            data-mapbox-api-key="<%=ENV['MY_MAPBOX_API_KEY']%>"></div>
         </div>
       </div>
     </div>
     <div class="card-side">
-    <!-- <div class="col-sm-5"> -->
       <div class="card-pool">
+        <h3><%= "Réserver cette piscine" %></h3>
         <%= simple_form_for([@pool, @booking]) do |f| %>
-          <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
-          <h3><center><%= @pool.price %> <i class="fas fa-euro-sign"></i> /soirée</center></h3>
-          <center><%= f.submit "Réserver", class: "btn btn-lg btn-search"%></center>
+          <%= f.input :date, as: :string, label: "Choisissez une date", input_html: {class: "datepicker"} %>
+          <p><center><%= @pool.price %> <i class="fas fa-euro-sign"></i> / jour</center></p>
+          <center><%= f.submit "Envoyer ma réservation", class: "btn btn-lg btn-search"%></center>
         <% end %>
       </div>
     </div>
