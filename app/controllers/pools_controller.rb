@@ -36,7 +36,7 @@ class PoolsController < ApplicationController
   def show
     authorize @pool
     @booking = Booking.new
-
+    @review = Review.new
   end
 
   def destroy
