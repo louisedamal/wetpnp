@@ -10,31 +10,25 @@
     <% @bookings_as_owner.each do |booking| %>
       <li class="booking">
         <div class="booking-status">
-          <p><%= booking.status %></p>
+          <p><%= booking.status %><br><%= booking.pool.price %> €</p>
         </div>
         <div class="booking-title">
-          <h4><%= link_to "#{booking.pool.title}", pool_path(booking.pool) %></h4>
-        </div>
-        <div class="booking-date">
-          <p><%= booking.date %></p>
+          <h5><%= link_to "#{booking.pool.title}", pool_path(booking.pool) %></h5>
         </div>
         <div class="booking-messages">
-          <p><%= link_to "Voir les messages", booking_messages_path(booking) %></p>
-        </div>
-        <div class="booking-price">
-          <p><%= booking.pool.price %> €</p>
+          <p><%= link_to '<i class="fas fa-envelope"></i>'.html_safe, booking_messages_path(booking) %></p>
         </div>
         <% if policy(Booking).create? %>
           <% if booking.status == "En attente" %>
             <div class="booking-accept">
-              <%= link_to "Accepter", booking_path(booking), method: :put %>
+              <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, booking_path(booking), method: :put %>
             </div>
             <div class="booking-delete">
-              <%= link_to "Refuser", booking_path(booking), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
+              <%= link_to '<i class="fas fa-times-circle"></i>'.html_safe, booking_path(booking), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
             </div>
             <% else %>
             <div class="booking-delete">
-              <%= link_to "Annuler", booking_path(booking), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
+              <%= link_to '<i class="fas fa-times-circle"></i>'.html_safe, booking_path(booking), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
             </div>
           <% end %>
         <% end %>
@@ -43,31 +37,25 @@
     <% @bookings_as_swimmer.each do |booking| %>
       <li class="booking">
         <div class="booking-status">
-          <p><%= booking.status %></p>
+          <p><%= booking.status %><br><%= booking.pool.price %> €</p>
         </div>
         <div class="booking-title">
-          <h4><%= link_to "#{booking.pool.title}", pool_path(booking.pool) %></h4>
+          <h5><%= link_to "#{booking.pool.title}", pool_path(booking.pool) %></h5>
         </div>
-        <div class="booking-date">
-          <p><%= booking.date %></p>
-        </div>
-        <div class="booking-messages">
-          <p><%= link_to "Voir les messages", booking_messages_path(booking) %></p>
-        </div>
-        <div class="booking-price">
-          <p><%= booking.pool.price %> €</p>
-        </div>
-
         <% if policy(Review).create? && booking.status == "Acceptée" %>
-          <div class="booking-accept">
-            <%= link_to "Donner mon avis", new_pool_review_path(booking.pool), method: :get %>
+          <div class="booking-review">
+            <%= link_to "Donner mon avis", new_pool_review_path(booking.pool), class:"btn btn-review", method: :get %>
           </div>
         <% end %>
-
+        <div class="booking-messages">
+          <p><%= link_to '<i class="fas fa-envelope"></i>'.html_safe, booking_messages_path(booking) %></p>
+        </div>
         <div class="booking-delete">
-          <%= link_to "Annuler", booking_path(booking), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
+          <%= link_to '<i class="fas fa-times-circle"></i>'.html_safe, booking_path(booking), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
         </div>
       </li>
     <% end %>
   </ul>
 </div>
+
+

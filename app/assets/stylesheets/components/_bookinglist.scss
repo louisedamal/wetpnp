@@ -25,6 +25,7 @@
   margin: 0px;
   font-weight: bold;
   padding-left: 10px;
+  text-align: center;
 }
 
 .booking-title a {
@@ -36,8 +37,21 @@
   font-weight: bold;
 }
 
-.booking-accept, .booking-delete a {
-  color: black;
-  padding-left: 50px;
+.booking-accept a {
+  color: green;
+  padding-left: 10px;
   padding-right: 10px;
+}
+
+.booking-delete a {
+  color: red;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.booking-messages p {
+  margin: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  size: 16px;
 }

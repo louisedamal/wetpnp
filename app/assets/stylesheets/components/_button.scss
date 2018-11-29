@@ -43,3 +43,18 @@
   font-size: 40px;
   padding: 10px;
 }
+
+.btn-review {
+  background: #31BAF5;
+  color: white;
+  border-radius: 7px;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.btn-review:hover {
+  box-shadow: 0 4px 4px 0 rgba(0,0,0,0.16);
+  color: white;
+  transform: translateY(-1px);
+  background: #259bce;
+}
