@@ -8,9 +8,9 @@
           <h1 id="title-form" class="text-center">Modifier ma piscine</h1>
           <%= link_to '<i class="fas fa-chevron-left"></i> Retour'.html_safe, pools_path%>
           <div class="form-pool">
-            <%= simple_form_for (@pool) do |f| %>
+            <%= simple_form_for(@pool) do |f| %>
               <%= f.input :title, label: 'Titre de l\'annonce' %>
-              <%= f.input :address, label: 'Adresse' %>
+              <%= f.input :address, as: :string, label: 'Adresse', input_html: { id: "pool-address"} %>
               <%= f.input :description, label: 'Description de votre annonce' %>
               <%= f.input :capacity, label: 'Capacité' %>
               <%= f.input :price, label: 'Prix par jour' %>
