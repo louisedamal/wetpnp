@@ -16,7 +16,13 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= cl_image_tag @user.avatar, :transformation=>[{:gravity=>"face"}], class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% if @user.present? %>
+            <% if @user.avatar.present? %>
+            <%= cl_image_tag @user.avatar, :transformation=>[{:gravity=>"face"}], class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <% end %>
+          <% else %>
+            <img src="https://www.systemealimentairequebec.info/sites/systemealimentairequebec.info/files/vignette_acteurs_locaux/avatar_neutre.png" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+          <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to bookings_path do %>
