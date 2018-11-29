@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+  before_action :set_booking, only: [:show, :edit, :update, :cancel]
 
   def index
     @bookings = policy_scope(Booking).order(created_at: :desc)
@@ -36,8 +36,8 @@ class BookingsController < ApplicationController
     redirect_to bookings_path
   end
 
-  def destroy
-    @booking.delete
+  def cancel
+    @booking.update(status: "Annulée")
     redirect_to bookings_path
   end
 
