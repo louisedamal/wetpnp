@@ -2,30 +2,39 @@
 
 <div class="container">
   <div class="container-booking">
-    <div id="profile-grid">
-      <div id="profile-picture">
-        <%= cl_image_tag @user.avatar, height: 300, width: 400, crop: :fill %>
+    <h1>Mon Profil</h1>
+    <div id="wrapper">
+
+      <div id="profile-picture" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 40%, rgba(0,36,61,0.6) 100%),url('<%=(cl_image_path @user.avatar, height: 300, width: 400, crop: :fill, :transformation=>[{:gravity=>"face"}]) unless @user.avatar.url.nil? %>')"></div>
+
+      <div class="profile-card">
+        <h5>Mon Nom</h5>
+        <p> <%=@user.first_name%> <%= @user.last_name%></p>
       </div>
-      <div id="name">
-        <%= @user.first_name%>
-        <%= @user.last_name%>
-      </div>
-      <div id="party-status">
+
+      <div class="profile-card">
+        <h5> Je suis plutôt</h5>
         <% if @user.party_lover == true %>
-          <p>I am a party animal</p>
+          <p> a party animal</p>
         <% else %>
-          <p> I don't like to party</p>
+          <p> contre les soirées </p>
         <% end %>
       </div>
-      <div id="stroke">
-        <%= @user.stroke %>
+
+      <div  class="profile-card">
+        <h5>Ma nage préférée</h5>
+        <p><%= @user.stroke %></p>
       </div>
-      <div id="party-quote">
-        <%= @user.party_quote%>
-        <% if policy(@user).edit?  %>
-          <%= link_to '<i class="fas fa-pencil-alt btn-modif"></i>'.html_safe, edit_user_path(@user) %>
-        <% end %>
+
+      <div class="profile-card">
+        <h5>Ma citation de soirée</h5>
+        <p><i> <%= @user.party_quote%></i></p>
       </div>
+    </div>
+    <div class="edit-profile">
+      <% if policy(@user).edit?  %>
+        <%= link_to '<i class="fas fa-pencil-alt"></i> <p>Editer mon profil</p>'.html_safe, edit_user_path(@user) %>
+      <% end %>
     </div>
   </div>
 </div>
