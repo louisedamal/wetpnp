@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   def index
     @booking = Booking.find(params[:booking_id])
-    @messages = policy_scope(Message).order(created_at: :desc)
+    @messages = policy_scope(Message).order(created_at: :asc)
   end
 
   def new
