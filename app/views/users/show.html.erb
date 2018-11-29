@@ -1,0 +1,21 @@
+<% content_for :navbar_class, "navbar-wagon-white-fix" %>
+
+<div class="container">
+  <div class="container-booking">
+    <div id="profile-grid">
+      <%= @user.first_name%>
+      <%= @user.last_name%>
+      <% if @user.party_lover == true %>
+        <p>I am a party animal</p>
+      <% else %>
+        <p> I don't like to party</p>
+      <% end %>
+      <%= @user.stroke %>
+      <%= @user.party_quote%>
+      <%= cl_image_tag @user.avatar, height: 300, width: 400, crop: :fill %>
+      <% if policy(@user).edit?  %>
+        <%= link_to '<i class="fas fa-pencil-alt btn-modif"></i>'.html_safe, edit_user_path(@user) %>
+      <% end %>
+    </div>
+  </div>
+</div>
