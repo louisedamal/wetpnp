@@ -3,12 +3,17 @@
   <div class="container-booking">
     <h1>Vos messages</h1>
     <%= link_to "Retour", bookings_path%>
-      <ul class="messages">
-        <% @messages.each do |message| %>
-          <%= render 'show', booking: @booking, message: message %>
-        <% end %>
-      </ul>
-      <%= render 'form', booking: @booking, message: @message %>
+    <div class= "row">
+      <div class= "col-sm-6 col-sm-offset-3">
+        <ul class="messages">
+          <% @messages.each do |message| %>
+            <%= render 'show', booking: @booking, message: message %>
+          <% end %>
+        </ul>
+        <%= render 'form', booking: @booking, message: @message %>
+
+      </div>
+    </div>
     </div>
   </div>
 </div>
