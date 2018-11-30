@@ -17,8 +17,21 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
-      <%= yield %>
+    <div style="min-height: 100vh"><%= yield %></div>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
+    <div class="footer">
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+      <div class="footer-sentence">
+        <a href="https://www.youtube.com/watch?v=k39ju0Z5VmE" target="_blank">Every time I dive in my pool it’s hard to be humble</a>
+      </div>
+      <div class="footer-copyright">
+        <p>© Barry Team</p>
+      </div>
+    </div>
   </body>
 </html>
