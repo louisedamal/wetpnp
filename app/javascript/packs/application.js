@@ -1,5 +1,6 @@
 import "bootstrap";
 import "../components/flatpickr"
+import "animate.css"
 
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { loadDynamicBannerText } from '../components/banner';

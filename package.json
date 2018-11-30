@@ -4,6 +4,7 @@
   "dependencies": {
     "@mapbox/mapbox-gl-geocoder": "^2.3.0",
     "@rails/webpacker": "3.5",
+    "animate.css": "^3.7.0",
     "bootstrap": "3",
     "flatpickr": "^4.5.2",
     "jquery": "^3.3.1",
