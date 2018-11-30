@@ -1,0 +1,4 @@
+<%= simple_form_for([booking, message], remote: true) do |f| %>
+    <%= f.input :content, label: 'Votre message' %>
+  <%= f.submit "Répondre", class: 'btn btn-blue'%>
+<% end %>

@@ -1,0 +1,16 @@
+function refreshForm(innerHTML) {
+  const newMessageForm = document.getElementById('new_message');
+  newMessageForm.innerHTML = innerHTML;
+}
+
+function addMessage(messageHTML) {
+  const messages = document.querySelector('.messages');
+    messages.insertAdjacentHTML('beforeend', messageHTML);
+}
+
+<% if @message.errors.any? %>
+  refreshForm('<%= j render "form", booking: @booking, message: @message %>');
+<% else %>
+  addMessage('<%= j render "show", booking: @booking, message: @message %>');
+  refreshForm('<%= j render "form", booking: @booking, message: Message.new %>');
+<% end %>
