@@ -14,12 +14,13 @@
           <h3>À propos de cette piscine</h3>
             <p><%= @pool.description %></p>
           <h3>Propriétaire</h3>
+            <%= link_to user_path(@pool.user) do %>
             <p><%= cl_image_tag @pool.user.avatar, :transformation=>[{:gravity=>"face"}], class:"message-avatar"%>     <%= @pool.user.first_name %></p>
+            <% end %>
           <h3>Capacité d'accueil</h3>
             <p><i class="fas fa-users"></i> <%= @pool.capacity %> Pers.</p>
             <h3>Prix</h3>
               <p><%= @pool.price %> <i class="fas fa-euro-sign"></i> / jour</p>
-
           <div class="comments">
             <h3><%= "Avis & Commentaires" %></h3>
             <% @pool.reviews.each do |review|%>
@@ -34,14 +35,6 @@
               <i><%= review.content %> </i><br><hr>
             <% end %>
           </div>
-          <div class="card-icons">
-              <% if policy(@pool).edit?  %>
-                <%= link_to '<i class="fas fa-pencil-alt btn-modif"></i>'.html_safe, edit_pool_path(@pool) %>
-              <% end %>
-              <% if policy(@pool).destroy?  %>
-                <%= link_to '<i class="far fa-trash-alt btn-modif"></i>'.html_safe, pool_path(@pool), method: :delete %>
-              <% end %>
-            </div>
         </div>
         <div class= "card-pool">
           <h3>Adresse</h3>

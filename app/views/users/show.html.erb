@@ -2,7 +2,11 @@
 
 <div class="container">
   <div class="container-booking">
-    <h1>Mon Profil</h1>
+    <% if @user == current_user %>
+      <h1>Mon Profil</h1>
+    <% else %>
+      <h1>Profil de <%=@user.first_name%></h1>
+    <% end %>
     <div id="wrapper">
 
       <div id="profile-picture" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 40%, rgba(0,36,61,0.6) 100%),url('<%=(cl_image_path @user.avatar, height: 300, width: 400, crop: :fill, :transformation=>[{:gravity=>"face"}]) unless @user.avatar.url.nil? %>')"></div>
@@ -32,7 +36,7 @@
       </div>
     </div>
     <div class="edit-profile">
-      <% if policy(@user).edit?  %>
+      <% if @user == current_user %>
         <%= link_to '<i class="fas fa-pencil-alt"></i> <p>Editer mon profil</p>'.html_safe, edit_user_path(@user) %>
       <% end %>
     </div>
