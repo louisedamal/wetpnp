@@ -6,14 +6,28 @@
       <% if @pools_user.count != 0 %>
         <% @pools_user.each do |pool| %>
           <li class="pool">
-            <div class="pool-title">
-              <h4><%= link_to pool.title, pool_path(pool)%></h4>
+            <div>
+              <%= cl_image_tag pool.photo, class: "pool-img" %>
             </div>
-            <div class="pool-price">
-              <p><%= pool.price %> €</p>
+            <div class="contain-title-description-price">
+              <div class="pool-title">
+                <h4><%= link_to pool.title, pool_path(pool)%></h4>
+              </div>
+
+              <div class="pool-desciption">
+                <p><%= pool.description %></p>
+              </div>
+              <div class="pool-price">
+                <p><%= pool.price %> <i class="fas fa-euro-sign"></i> / jour</p>
+              </div>
             </div>
-            <div class="pool-delete">
-              <%= link_to "Supprimer", pool_path(pool), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
+            <div class="pool-actions">
+              <div class="pool-delete">
+                <%= link_to '<i class="fas fa-trash-alt"></i> Supprimer'.html_safe, pool_path(pool), method: :delete, data: {confirm: "Êtes-vous sûr ?"} %>
+              </div>
+              <div class="pool-edit">
+                <%= link_to '<i class="fas fa-pencil-alt"></i> Editer'.html_safe, edit_pool_path(pool)%>
+              </div>
             </div>
           </li>
       <% end %>
