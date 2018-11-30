@@ -34,14 +34,6 @@
               <i><%= review.content %> </i><br><hr>
             <% end %>
           </div>
-          <div class="card-icons">
-              <% if policy(@pool).edit?  %>
-                <%= link_to '<i class="fas fa-pencil-alt btn-modif"></i>'.html_safe, edit_pool_path(@pool) %>
-              <% end %>
-              <% if policy(@pool).destroy?  %>
-                <%= link_to '<i class="far fa-trash-alt btn-modif"></i>'.html_safe, pool_path(@pool), method: :delete %>
-              <% end %>
-            </div>
         </div>
         <div class= "card-pool">
           <h3>Adresse</h3>
