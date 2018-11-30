@@ -1,12 +1,13 @@
 .messages {
-  background: #3bbbf32e;
+  background: white;
   padding: 20px;
   border-radius: 8px;
   min-height: 50vh;
+  box-shadow: 3px 3px 3px 3px rgba(72, 164, 225, 0.2)
 }
 
 .message {
-  background: white;
+  background: #3bbbf32e;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -17,8 +18,8 @@
 
 .message-content {
   flex-grow: 1;
-  padding-left: 55px;
-  font-size: 13px;
+  padding-left: 14px;
+  font-size: 12px;
   color: rgba(0,0,0,0.4);
   margin-bottom: 0px;
 }
@@ -34,13 +35,14 @@
 
 .message-user p {
   color: black;
-  margin: 0px;
-  margin-left: 15px;
+  margin-left: 8px;
+  font-size: 12px;
+  margin-bottom: 0;
 }
 
 .message-date p {
   margin: 0px;
-  font-size: 13px;
+  font-size: 10px;
 }
 
 .message-current-user {
