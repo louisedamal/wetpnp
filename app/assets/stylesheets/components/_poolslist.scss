@@ -7,16 +7,25 @@
 
 .pool {
   background: white;
+  position: relative;
   padding: 20px;
   display: flex;
   align-items: center;
   margin-top: 20px;
   border-radius: 6px;
+  box-shadow: 3px 3px 3px 3px rgba(72, 164, 225, 0.2)
+}
+
+.pool-desciption {
+    color: #ACACAC;
+    font-size: 14px;
+    font-weight: lighter;
+}
+.contain-title-description-price {
+    padding: 10px;
 }
 
 .pool-title {
-  flex-grow: 1;
-  padding-left: 10px;
   font-size: 13px;
   color: rgba(0,0,0,0.4);
   margin-bottom: 0px;
@@ -33,7 +42,18 @@
 }
 
 .pool-delete a {
-  color: #f70000;
+  color: #103c6b;
   padding-left: 50px;
   padding-right: 10px;
+}
+
+.pool-edit a {
+  color: #103c6b;
+  padding-left: 50px;
+  padding-right: 10px;
+}
+
+.pool-actions {
+    right: 30px;
+    position: absolute;
 }
