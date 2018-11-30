@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
 
   def index
     @user = current_user
-    @bookings = policy_scope(Booking).order(created_at: :desc)
+    @bookings = policy_scope(Booking).order(created_at: :asc)
     @bookings_as_swimmer = current_user.bookings
     @bookings_as_owner = current_user.bookings_as_owner
   end
