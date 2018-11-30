@@ -68,6 +68,7 @@
             <%= simple_form_for([@pool, @booking]) do |f| %>
               <%= f.input :date, as: :string, label: "Choisissez une date", input_html: {class: "datepicker"} %>
               <p><center><%= @pool.price %> <i class="fas fa-euro-sign"></i> / jour</center></p>
+
               <center><%= f.submit "Envoyer ma réservation", class: "btn btn-lg btn-search"%></center>
             <% end %>
           </div>
