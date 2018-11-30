@@ -38,7 +38,7 @@
         </li>
       <% end %>
     </div>
-    <div id="owner">
+    <div id="owner" class="hidden">
       <% @bookings_as_owner.each do |booking| %>
       <% if booking.status == "En attente" %>
           <li class="booking" id="booking-waiting">

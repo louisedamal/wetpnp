@@ -7,7 +7,19 @@
             <div class="form-pool">
               <%= simple_form_for [@pool, @review] do |f| %>
                 <%= f.input :content, label: 'Mon commentaire'%>
-                <%= f.input :rating,  label: false, collection: 0..5 %>
+                <%= f.input :rating, label: false, as: :hidden %>
+                <fieldset class="rating">
+                  <input type="radio" id="star5" name="rating" data-value="5" class= "star" />
+                  <label class = "full" for="star5" title="Excellent - 5 stars"></label>
+                  <input type="radio" id="star4" name="rating" data-value="4" class= "star"/>
+                  <label class = "full" for="star4" title="Trop bien - 4 stars"></label>
+                  <input type="radio" id="star3" name="rating" data-value="3" class= "star"/>
+                  <label class = "full" for="star3" title="Ok - 3 stars"></label>
+                  <input type="radio" id="star2" name="rating" data-value="2" class= "star" />
+                  <label class = "full" for="star2" title="Pas mal - 2 stars"></label>
+                  <input type="radio" id="star1" name="rating" data-value="1" class= "star" />
+                  <label class = "full" for="star1" title="Nul - 1 star"></label>
+                </fieldset>
                 <%= f.button :submit, "Envoyer", class: "btn btn-lg btn-search" %>
               <% end %>
             </div>
