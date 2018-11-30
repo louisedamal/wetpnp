@@ -1,8 +1,9 @@
 .bookings {
-  background: #3bbbf32e;
+  background: white;
   padding: 20px;
   border-radius: 8px;
   min-height: 70vh;
+  box-shadow: 5px 5px 5px 5px rgba(72, 164, 225, .2);
 }
 
 .booking {
@@ -27,6 +28,7 @@
   font-weight: bold;
   padding-left: 10px;
   text-align: center;
+  color: black;
 }
 
 .booking-title a {
@@ -57,4 +59,22 @@
   padding-left: 10px;
   padding-right: 10px;
   font-size: 25px;
+}
+
+#booking-waiting {
+  background: white;
+  box-shadow: 3px 3px rgba(189, 189, 189, 0.2);
+  border: 4px #929292 solid;
+}
+
+#booking-canceled {
+  background: white;
+  box-shadow: 3px 3px rgba(189, 189, 189, 0.2);
+  border: 4px #f96666 solid;
+}
+
+#booking-accepted {
+  background: white;
+  box-shadow: 3px 3px rgba(189, 189, 189, 0.2);
+  border: 4px #0bbd46 solid;
 }
