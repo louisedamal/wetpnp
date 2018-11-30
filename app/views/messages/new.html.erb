@@ -1,9 +1,0 @@
-<% content_for :navbar_class, "navbar-wagon-white-fix" %>
-<div class="container">
-  <div class="container-booking">
-    <%= simple_form_for [@booking, @message] do |f| %>
-        <%= f.input :content, label: 'Votre message' %>
-      <%= f.submit "Répondre", class: 'btn btn-blue'%>
-    <% end %>
-  </div>
-</div>
