@@ -1,47 +1,48 @@
 <% content_for :navbar_class, "navbar-wagon-white-fix" %>
-
 <div class="home-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 40%, rgba(0,36,61,0.6) 100%), url(<%= cl_image_path(@pool.photo)%> );">
   <div class="banner-title">
     <h1><%= @pool.title %></h1>
   </div>
 </div>
-
 <div class="container">
   <div class="main-container">
     <div class="card-container">
       <div class="global-card">
         <div class="card-pool card-pool-left">
           <h3>À propos de cette piscine</h3>
-            <p><%= @pool.description %></p>
+          <p><%= @pool.description %></p>
           <h3>Propriétaire</h3>
-            <p><%= cl_image_tag @pool.user.avatar, :transformation=>[{:gravity=>"face"}], class:"message-avatar"%>     <%= @pool.user.first_name %></p>
+          <p><%= cl_image_tag @pool.user.avatar, :transformation=>[{:gravity=>"face"}], class:"message-avatar"%>     <%= @pool.user.first_name %></p>
           <h3>Capacité d'accueil</h3>
-            <p><i class="fas fa-users"></i> <%= @pool.capacity %> Pers.</p>
-            <h3>Prix</h3>
-              <p><%= @pool.price %> <i class="fas fa-euro-sign"></i> / jour</p>
-
+          <p><i class="fas fa-users"></i> <%= @pool.capacity %> Pers.</p>
+          <h3>Prix</h3>
+          <p><%= @pool.price %> <i class="fas fa-euro-sign"></i> / jour</p>
           <div class="comments">
             <h3><%= "Avis & Commentaires" %></h3>
-            <% @pool.reviews.each do |review|%>
-              <span class="star">
-              <% review.rating.times do %>
-                <i class="fa fa-star" aria-hidden="true"></i>
+            <% if @pool.reviews.blank?%>
+              <i>Soyez le premier à laisser un commentaire !</i>
+            <% else %>
+              <% @pool.reviews.each do |review|%>
+                <span class="star">
+                <% review.rating.times do %>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                <% end %>
+                <% (5 - review.rating).times do %>
+                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                <% end %>
+                </span> <br>
+                <i><%= review.content %> </i><br><hr>
               <% end %>
-              <% (5 - review.rating).times do %>
-                <i class="fa fa-star-o" aria-hidden="true"></i>
-              <% end %>
-              </span> <br>
-              <i><%= review.content %> </i><br><hr>
             <% end %>
           </div>
           <div class="card-icons">
-              <% if policy(@pool).edit?  %>
-                <%= link_to '<i class="fas fa-pencil-alt btn-modif"></i>'.html_safe, edit_pool_path(@pool) %>
-              <% end %>
-              <% if policy(@pool).destroy?  %>
-                <%= link_to '<i class="far fa-trash-alt btn-modif"></i>'.html_safe, pool_path(@pool), method: :delete %>
-              <% end %>
-            </div>
+            <% if policy(@pool).edit?  %>
+              <%= link_to '<i class="fas fa-pencil-alt btn-modif"></i>'.html_safe, edit_pool_path(@pool) %>
+            <% end %>
+            <% if policy(@pool).destroy?  %>
+              <%= link_to '<i class="far fa-trash-alt btn-modif"></i>'.html_safe, pool_path(@pool), method: :delete %>
+            <% end %>
+          </div>
         </div>
         <div class= "card-pool">
           <h3>Adresse</h3>
@@ -55,17 +56,31 @@
         </div>
       </div>
     </div>
-    <div class="card-side">
-      <div class="card-pool">
-        <h3><%= "Réserver cette piscine" %></h3>
-        <%= simple_form_for([@pool, @booking]) do |f| %>
-          <%= f.input :date, as: :string, label: "Choisissez une date", input_html: {class: "datepicker"} %>
-          <p><center><%= @pool.price %> <i class="fas fa-euro-sign"></i> / jour</center></p>
-          <center><%= f.submit "Envoyer ma réservation", class: "btn btn-lg btn-search"%></center>
-        <% end %>
-      </div>
+      <% if @pool.user == current_user %>
+        <div class="card-side">
+          <div class="card-pool">
+            <h3><%= "Mes réservations" %></h3>
+             <% if @pool.bookings.blank?%>
+              <p>Aucune réservation en cours</p>
+             <% else %>
+             <p><%= pluralize @pool.bookings.size, "Réservation" %> en cours</p>
+             <% end %>
+          </div>
+        </div>
+      <% else %>
+        <div class="card-side">
+          <div class="card-pool">
+            <h3><%= "Réserver cette piscine" %></h3>
+            <%= simple_form_for([@pool, @booking]) do |f| %>
+              <%= f.input :date, as: :string, label: "Choisissez une date", input_html: {class: "datepicker"} %>
+              <p><center><%= @pool.price %> <i class="fas fa-euro-sign"></i> / jour</center></p>
+              <center><%= f.submit "Envoyer ma réservation", class: "btn btn-lg btn-search"%></center>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
-</div>
+<div>
 
 
