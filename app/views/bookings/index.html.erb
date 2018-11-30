@@ -9,10 +9,16 @@
   <ul class="bookings">
     <div id="swimmer">
       <% @bookings_as_swimmer.each do |booking| %>
-        <li class="booking">
-          <div class="booking-status">
-            <p><%= booking.status %><br><%= booking.pool.price %> €</p>
-          </div>
+        <% if booking.status == "En attente" %>
+          <li class="booking" id="booking-waiting">
+        <% elsif booking.status == "Annulée" %>
+          <li class="booking" id="booking-canceled">
+        <% elsif booking.status == "Acceptée" %>
+          <li class="booking" id="booking-accepted">
+        <% end %>
+            <div class="booking-status" >
+              <p><%= booking.status %><br><%= booking.pool.price %> €</p>
+            </div>
           <div class="booking-title">
             <h5><%= link_to "#{booking.pool.title}", pool_path(booking.pool) %></h5>
           </div>
@@ -34,7 +40,13 @@
     </div>
     <div id="owner">
       <% @bookings_as_owner.each do |booking| %>
-        <li class="booking">
+      <% if booking.status == "En attente" %>
+          <li class="booking" id="booking-waiting">
+        <% elsif booking.status == "Annulée" %>
+          <li class="booking" id="booking-canceled">
+        <% elsif booking.status == "Acceptée" %>
+          <li class="booking" id="booking-accepted">
+        <% end %>
           <div class="booking-status">
             <p><%= booking.status %><br><%= booking.pool.price %> €</p>
           </div>
