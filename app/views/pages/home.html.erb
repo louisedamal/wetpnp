@@ -17,11 +17,12 @@
   </div>
 </div>
 
-  <div class="container-home-title">
-    <h3>Les meilleures piscines pour vos soirées</h3>
-    <p>Une soirée de rêve prévue ? Des centaines de piscines à découvrir !</p>
-  </div>
-  <div class= "container-home">
+<div class="container-home-title">
+  <h3>Les meilleures piscines pour vos soirées</h3>
+  <p>Une soirée de rêve prévue ? Des centaines de piscines à découvrir !</p>
+</div>
+
+<div class= "container-home">
   <div class="display-flex">
     <% @pools.each do |pool| %>
       <div class = "card">
@@ -32,7 +33,7 @@
           </div>
         </div>
         <div class="pool-content">
-            <p><%= pool.price %>€</p>
+            <p><%= pool.price %> <i class="fas fa-euro-sign"></i> / jour</p>
         </div>
         <% end %>
       </div>
@@ -40,6 +41,10 @@
   </div>
 </div>
 
+
+  <div class="container-home-title">
+    <h3><i class="fas fa-map-marker-alt"></i> Localiser les piscines disponibles</h3>
+  </div>
 <div style="margin: 50px;">
   <div
     id="map"

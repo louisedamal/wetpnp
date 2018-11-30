@@ -47,10 +47,10 @@
           <% if policy(Booking).create? %>
             <% if booking.status == "En attente" %>
               <div class="booking-accept">
-                <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, booking_path(booking), method: :put %>
+                <%= link_to '<i class="fas fa-check-circle"></i>'.html_safe, booking_path(booking), method: :patch %>
               </div>
               <div class="booking-delete">
-                <%= link_to '<i class="fas fa-times-circle"></i>'.html_safe, booking_path(booking), method: :put, data: {confirm: "Êtes-vous sûr ?"} %>
+                <%= link_to '<i class="fas fa-times-circle"></i>'.html_safe, cancel_booking_path(booking), method: :put, data: {confirm: "Êtes-vous sûr ?"} %>
               </div>
               <% elsif booking.status == "Acceptée" %>
               <div class="booking-delete">
